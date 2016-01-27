@@ -1,2 +1,2 @@
-Helpfull commands, snippers of code, etc
+Helpfull commands, snippets of code, etc
 
