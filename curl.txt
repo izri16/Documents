@@ -1,0 +1,38 @@
+cURL examples
+
+Any request
+    curl http://127.0.0.1:8000/users/my-users/ --request GET
+    curl http://127.0.0.1:8000/users/my-users/ --request POST
+    curl http://127.0.0.1:8000/users/my-users/ --request PUT
+    curl http://127.0.0.1:8000/users/my-users/ --request DELETE
+
+GET
+    curl http://127.0.0.1:8000/users/my-users/ 
+    curl http://127.0.0.1:8000/users/my-users/ --head
+    curl http://127.0.0.1:8000/users/my-users/ --head -o dump.txt
+    curl -H "Authorization: Token 782c986518f2c2fb41ee7b22519cf1b799bf806a" 
+          http://127.0.0.1:8000/users/my-users/
+    curl -H "Authorization: Token 782c986518f2c2fb41ee7b22519cf1b799bf806a" 
+          http://127.0.0.1:8000/users/my-users/ --head
+    
+POST with data
+    curl http://127.0.0.1:8000/users/my-users/ --request POST 
+         --data "name=Riso&age=18"
+    
+POST file upload
+    curl --form "fileupload=@my-file.txt" https://example.com/resource.cgi
+    
+POST file upload with fields and a filename
+    curl --form "fileupload=@my-file.txt;filename=desired-filename.txt" 
+    --form param1=value1 --form param2=value2 https://example.com/resource.cgi
+    
+    # fileupload value is key in request.FILES dictionary
+    fileupload = request.FILES['fileupload']
+    
+    # filename will be name of uploaded file
+    
+PUT upload file
+    curl --upload-file [my-file] [url]
+    
+--data works for GET, POST, PUT and DELETE
+
