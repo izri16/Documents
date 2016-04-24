@@ -1,0 +1,84 @@
+\c db           // change database
+\l              // list all databases
+\dt             // list all tables in current database
+\d+ table_name  // display details about table
+\du             // display users table (roles)
+\q              // quit
+
+
+Connect as postgres user:
+  sudo su postgres
+  psql -d postgres -U postgres
+
+  -d    // db_name
+  -h    // host
+  -p    // port
+  -U    // username
+
+
+Connect as other user:
+  psql -h localhost -U user_name db_name
+
+
+User management:
+  CREATE USER rw WITH PASSWORD 'password';
+  ALTER USER rw WITH PASSWORD 'newpassword';
+  ALTER USER rw RENAME TO ro;
+  \password postgres    // change password to postgres user
+  \dropuser username
+
+
+Create database:
+  CREATE DATABASE mydb;
+  GRANT CONNECT ON DATABASE mydb to rw;     // user rw has priviligies to access db (only access)
+  REVOKE ALL ON DATABASE mydb FROM PUBLIC;
+  REVOKE ALL ON SCHEMA public FROM PUBLIC;
+  
+  \c mydb
+  ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, UPDATE, INSERT, DELETE ON TABLES to rw;
+  ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, UPDATE ON SEQUENCES to rw;
+
+
+Create table examples:
+  
+  CREATE TYPE competition_types AS ENUM ('val1', 'val2', 'val3', 'val4', 'val5', 'val6');
+
+  CREATE TABLE competitions(
+    id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(70) NOT NULL,
+    year INT NOT NULL,
+    type competition_types
+  );
+
+  CREATE TABLE results(
+    person_id INT REFERENCES people(id) ON DELETE CASCADE,
+    competition_id INT REFERENCES competitions(id) ON DELETE CASCADE,
+    points INT NOT NULL,
+    PRIMARY KEY(person_id, competition_id)
+  );
+
+  ALTER TABLE results
+  DROP column person_id;
+
+  ALTER TABLE results
+  ADD column person_id INT REFERENCES people(id) ON DELETE CASCADE;
+
+  CREATE VIEW users_all AS 
+  SELECT * from users
+
+  SELECT FROM users_all
+
+  // cant turn foreign key constraint of in postgres
+  // also does not support column ordering
+
+
+Dump:
+  pg_dump hiring > folder/out.sql                 // dump database, be carefull about rights
+                                                  // postgres user must have access to a folder where
+                                                  // it dumps the file
+  psql dbname < infile                            // restore from dump
+
+
+Other:
+  Public == all users
+  First we add permissions and then we revoke them
