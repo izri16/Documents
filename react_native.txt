@@ -1,0 +1,33 @@
+react-native run-android
+react-native start
+
+./genymotion
+
+adb logcat *:S ReactNative:V ReactNativeJS:V // see logs in terminal
+
+console.warn
+console.error
+
+watchman shutdown-server
+error: niekedy treba zvysit watches
+	sudo -i
+	echo 100000 > /proc/sys/fs/inotify/max_user_watches
+
+
+------------------
+Navigation.NavigationBar
+	http://stackoverflow.com/questions/33680794/react-native-navigator-navigationbar-where-are-the-docs
+
+	https://github.com/h87kg/NavigatorDemo
+
+	https://medium.com/the-exponent-log/routing-and-navigation-in-react-native-6b27bee39603#.7sbkjri0s
+
+	https://marconijr.com/post/react-native-and-redux/
+
+	http://marmelab.com/blog/2015/12/17/react-directory-structure.html
+
+	API:
+	https://www.thepolyglotdeveloper.com/2015/09/make-http-requests-in-ios-with-react-native/
+	https://facebook.github.io/react-native/docs/network.html
+
+
