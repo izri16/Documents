@@ -1,0 +1,30 @@
+/*eslint-disable */
+
+//suppress all warnings between comments
+alert('foo');
+
+/*eslint-enable */
+
+------------------------------------------------
+
+/*eslint-disable no-alert, no-console */
+
+alert('foo');
+console.log('bar');
+
+/*eslint-enable no-alert */
+
+------------------------------------------------
+
+// eslint-disable-next-line no-use-before-define
+var thing = new Thing();
+
+var thing = new Thing(); // eslint-disable-line no-use-before-define
+
+--------------------------------------------------------------------
+
+disable whole file
+/* eslint-disable */
+
+disable rule for whole file
+/* eslint ruleName:0 */
