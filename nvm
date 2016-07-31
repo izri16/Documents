@@ -1,0 +1,7 @@
+// set default node version
+// need to restart terminal
+nvm alias default 6.3.1
+
+nvm use version
+
+nvm ls
