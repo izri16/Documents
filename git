@@ -1,0 +1,4 @@
+// move unstaged changes from one branch to another
+git stash
+git checkout desired-branch
+git stash pop
