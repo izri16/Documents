@@ -1,0 +1,4 @@
+- ensure that device is found in 'adb devices'
+- react-native start // maybe not needed
+- react-native run-android // end with error that could not install adb with some path
+- adb install 'path' from error above
