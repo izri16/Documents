@@ -67,6 +67,8 @@ Create table examples:
   SELECT * from users
 
   SELECT FROM users_all
+  
+  ALTER TABLE whether_stations RENAME TO wheather_stations;
 
   // cant turn foreign key constraint of in postgres
   // also does not support column ordering
