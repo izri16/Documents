@@ -1,0 +1,40 @@
+babel-core
+  Core compiler. Compile to ES5. Does transforms (like arrow functions), but
+  not polyfills. Need 'presets' which defines sets of transforms
+  that babel-core applies to files. Presets can be stored in .babelrc.
+
+babel-cli
+  Install command line tools like babel or babel-node.
+  Better install localy.
+
+    babel
+      Command line interface for transforming code using babel-core.
+
+    babel-node
+      Can run scripts from command line or be used as REPL.
+      Automatically requires babel-polyfill and babel-register.
+      Not for production use.
+
+babel-register
+  Compile files in require time.
+  Similar thinks can do babel-runtime.
+  Not for production use.
+
+babel-polyfill
+  Emulate full ES6 environment.
+  Add polyfill for promises, Array etc.
+
+stages
+  Group features that are not yet finalized.
+  5 groups, labeled 0-4.
+  4 = standard.
+  0 = farest from being standard.
+
+  babel-preset-stage-0
+  babel-preset-stage-1
+  babel-preset-stage-2
+  babel-preset-stage-3
+  babel-preset-es2015
+
+nodemon
+  Monitor for any changes in source and automatically restart server.
