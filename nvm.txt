@@ -1,0 +1,22 @@
+// set default node version
+// need to restart terminal
+nvm alias default 6.3.1
+
+// list installed node versions
+nvm ls
+
+// set version to use
+nvm use version
+
+// print currently used version
+nvm current
+
+// install latest node version
+nvm install node
+
+// path to executable
+nvm which version
+
+nvm install version
+
+nvm uninstall version
