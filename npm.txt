@@ -66,8 +66,29 @@ npm bugs package
 npm repo package
 
 
+// use for own npm modules
+// creates symlink from global scope to current folder
+npm link
+
+// create link from node_modules to global scope,
+// so can try unpublished changes in own npm module
+npm link package_name
+
+
 // run scipt from 'scripts' in package.json
 npm run script
+
+
+1.2.3       // match match exactly
+~1.2.3      // only last can increase (1.2.x)
+^1.2.3      // last and middle can increase (1.x.x)
+>1.2.3      // must be greater than, same for (>=, <, <=)
+latest      // always latest release
+*           // match any version
+
+first-number    // major change, incompatible api change
+second-number   // minor change, add some api
+last-number     // patch
 
 
 OTHER
