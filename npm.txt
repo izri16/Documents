@@ -94,3 +94,22 @@ last-number     // patch
 OTHER
 - .npmignore if present overrides .gitignore
 
+
+Updating NPM when using NVM
+    which -a npm    // list paths to all npm installed
+
+    consider /home/richard/.nvm/versions/node/v7.4.0/bin/npm
+    is the path you want to update
+
+    cd /home/richard/.nvm/versions/node/v7.4.0/lib
+
+    npm install npm
+
+    or
+
+    npm install npm@version
+
+    or
+
+    npm install npm@latest
+
