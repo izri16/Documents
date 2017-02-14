@@ -1,0 +1,75 @@
+// create package.json
+npm init
+
+// no promp, use defaults
+npm init --yes
+
+// set defaults
+npm config set init.author.name YOUR_NAME
+
+
+// install everything from package.json
+npm install
+
+// install only dependencies not devDependencies
+npm install --production
+
+// install only dependencies not devDependencies
+NODE_ENV=production npm install
+
+// install localy, save to dependencies
+npm install package --save
+
+// install localy, cave to devDependencies
+npm install package --save-dev
+
+// install globaly
+npm install package -g
+
+// uninstall package
+npm uninstall package
+
+// uninstall global package
+npm uninstall package -g
+
+// to uninstall everything remove node_modules
+rm -rf ./node_modules
+
+
+// list packages in current dir
+npm ls
+
+// list global packages
+npm ls -g
+
+// list local outdated packages
+npm outdated
+
+// list global outdated packages
+npm outdated -g
+
+
+// create npm-shrinkwrap.json
+npm shrinkwrap
+
+// also include devDependencies
+npm shrinkwrap --dev
+
+
+// open package home site
+npm hom package
+
+// open package site with issue
+npm bugs package
+
+// open package repo
+npm repo package
+
+
+// run scipt from 'scripts' in package.json
+npm run script
+
+
+OTHER
+- .npmignore if present overrides .gitignore
+
