@@ -1,9 +1,9 @@
 # DB Scaling
 
 ## CAP theorem
-C -> consistency (Every read receives the most recent write or an error)
-A -> availability (Every request receives a (non-error) response, without the guarantee that it contains the most recent write)
-P -> partition tolerance (The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes)
+* C -> consistency (Every read receives the most recent write or an error)
+* A -> availability (Every request receives a (non-error) response, without the guarantee that it contains the most recent write)
+* P -> partition tolerance (The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes)
 
 The CAP theorem states you can have any two, but not all of those properties in distributed database. In reality you can not avoid P so you must choose between A and C.
 
