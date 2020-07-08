@@ -23,6 +23,13 @@ Introduce multiple "performance" updates. Currently supported by most browsers b
 * Multiplexed instead of ordered requests: put simply, multiplexing allows your Browser to fire off multiple requests at once on the same connection and receive the requests back in any order.
   This can significantly improve the page load time as the requests are not being blocked by each other and there is also not the overhead of managing multiple
   connections on both the browser and the server side.
+  
+Consider downloading `index.html` that would then fetch additional 100 resources (large website):
+* HTTP/1.0: all the resources would need to be downloaded one by one
+* HTTP/1.1: with browser allowing 5 open connections at once, there would be ~5x expected improvement, but with the cost of managing multiple connections
+* HTTP/1.1 (pipelining): you could send all requests at once, but if e.g. the first was slow to respond, all other would need to wait, also poor support
+* HTTP/2: all resources can be downloaded in parallel
+* HTTP/2 (push): some resources may be send at the time when downloading `index.html` to further speed up the download
 
 Usefull resources:
 
