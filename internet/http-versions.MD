@@ -1,4 +1,4 @@
-# HTTP/1.0 vs HTTP/1.1 vs HTTP/2.0
+# HTTP/1.0 vs HTTP/1.1 vs HTTP/2 vs HTTP/3
 
 ## HTTP/1.0
 By default every connection was terminated after server response. That could be overriden using `keep-alive` header. When `keep-alive` was supplied server kept
@@ -39,3 +39,7 @@ Usefull resources:
 https://stackoverflow.com/questions/36517829/what-does-multiplexing-mean-in-http-2
 
 https://freecontent.manning.com/animation-http-1-1-vs-http-2-vs-http-2-with-push/
+
+## HTTP/3
+HTTP/3, will use QUIC instead TCP/TLS for the transport layer portion.
+
