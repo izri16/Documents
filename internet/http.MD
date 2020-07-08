@@ -24,6 +24,9 @@ Introduce multiple "performance" updates. Currently supported by most browsers b
   This can significantly improve the page load time as the requests are not being blocked by each other and there is also not the overhead of managing multiple
   connections on both the browser and the server side.
   
+* Header compression: HTTP/1.1 header compression was vulnerable to CRIME attack that could extract secret information from headers. Therefore in HTTP/1.1 headers
+  should not be compressed only the body. HTTP/2 supports a new dedicated header compression algorithm, called HPACK. HPACK was developed with attacks like CRIME   in mind, and is therefore considered safe to use. Headers compression allows for faster transfers.
+  
 Consider downloading `index.html` that would then fetch additional 100 resources (large website):
 * HTTP/1.0: all the resources would need to be downloaded one by one
 * HTTP/1.1: with browser allowing 5 open connections at once, there would be ~5x expected improvement, but with the cost of managing multiple connections
