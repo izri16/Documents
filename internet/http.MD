@@ -6,7 +6,6 @@
 By default every connection was terminated after server response. That could be overriden using `keep-alive` header. When `keep-alive` was supplied server kept
 the connection open unless a specific time period has elapsed e.g. 1 minute. Therefore when sending multiple requests it was more efficient as there was no need
 to establish the new connection for each request.
-Browsers supported only one open connection at a time.
 
 ### HTTP/1.1
 The `keep-alive` header is being sent by default, unless explicitely set not to.
@@ -28,7 +27,7 @@ Introduce multiple "performance" updates. Currently supported by most browsers b
   should not be compressed only the body. HTTP/2 supports a new dedicated header compression algorithm, called HPACK. HPACK was developed with attacks like CRIME   in mind, and is therefore considered safe to use. Headers compression allows for faster transfers.
   
 Consider downloading `index.html` that would then fetch additional 100 resources (large website):
-* HTTP/1.0: all the resources would need to be downloaded one by one
+* HTTP/1.1 (one connection): all the resources would need to be downloaded one by one
 * HTTP/1.1: with browser allowing 5 open connections at once, there would be ~5x expected improvement, but with the cost of managing multiple connections
 * HTTP/1.1 (pipelining): you could send all requests at once, but if e.g. the first was slow to respond, all other would need to wait, also poor support
 * HTTP/2: all resources can be downloaded in parallel
