@@ -6,3 +6,5 @@ For example Amazon RDS allows vertical scaling up to 64TB for postresql database
 For storing even more data one would probably need to use NoSQL database that is easier to scale horizontally.
 
 Relational databases are designed to scale up on expensive single machines.
+
+TODO: CAP + consistency vs availability for postgresql read replicas
