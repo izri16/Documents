@@ -29,4 +29,13 @@ a connection will send an HTTP request that includes a few required headers:
 # Periodic polling
 * The client ask server for data every `n` seconds/minutes/whatever. Not really realtime and result in more requests that "long polling".
 
-* TODO: authentication and security
+# Security when using with cookie based authentication
+Based on this https://www.christian-schneider.net/CrossSiteWebSocketHijacking.html article it is possible to perform similar attack as is the CSRF.
+The malicious site can send the request during the handshake/upgrade process phase. It will automatically send the cookies (as `ws` request is regular `http` request) and the attacker website can create the connection with ability to read/write data.
+The CORS protection also does not work for `ws` or `wss` protocol.
+
+This can be avoided either by:
+* Check `Origin` header on server. Modern browsers should not be able to fake it.
+* Better: Use similar protection as CSRF does using extra token.
+
+Ideally use some library for that and do not implement the protection on your own.
