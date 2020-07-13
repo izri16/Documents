@@ -39,3 +39,13 @@ This can be avoided either by:
 * Better: Use similar protection as CSRF does using extra token.
 
 Ideally use some library for that and do not implement the protection on your own.
+
+# Socket.io
+Library that can handle Websocket protocol, but also have fallback options to simulate realtime behavior for old browser or cases when websocket connection fails
+(long polling).
+* Has built-in reconnect after connection is lost (Websocket does not do that automatically).
+* Has built-in broadcast (Websocket does not have that).
+* Allows organization of sockets into rooms and namespaces (Websocket does not have that).
+* Allows sending JSON data
+* Built on Engine.IO
+* Can work behing load balancer or nginx
