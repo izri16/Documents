@@ -10,3 +10,12 @@ Options to avoid CSRF:
   put it to desired header. Django does csrf protection similar to this.
 
 Use library, do not protect yourself using custom solution!
+
+## websockets
+Based on this https://www.christian-schneider.net/CrossSiteWebSocketHijacking.html article it is possible to perform similar attack as is the CSRF. The malicious site can send the request during the handshake/upgrade process phase. It will automatically send the cookies (as ws request is regular http request) and the attacker website can create the connection with ability to read/write data. The CORS protection also does not work for ws or wss protocol.
+
+This can be avoided either by:
+
+Check Origin header on server. Modern browsers should not be able to fake it.
+Better: Use similar protection as CSRF does using extra token.
+Ideally use some library for that and do not implement the protection on your own.
