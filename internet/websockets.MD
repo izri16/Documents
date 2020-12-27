@@ -37,6 +37,7 @@ The CORS protection also does not work for `ws` or `wss` protocol.
 This can be avoided either by:
 * Check `Origin` header on server. Modern browsers should not be able to fake it.
 * Better: Use similar protection as CSRF does using extra token.
+* According to https://blog.jimmyli.us/articles/2020-08/Cross-Site-WebSocket-Hijacking-With-SocketIO socket.io is not protected to it when using cookies. One can however implement one (or both) of the above checks using custom socket.io middleware. Similar check could be done for Apollo subscriptions.
 
 Ideally use some library for that and do not implement the protection on your own.
 
@@ -49,3 +50,15 @@ Library that can handle Websocket protocol, but also have fallback options to si
 * Allows sending JSON data
 * Built on Engine.IO
 * Can work behing load balancer or nginx
+
+# Apollo subscriptions (graphql)
+* Can handle subscription (real-time data) for graphql server
+* For Apollo one can choose whatever transport he wants to use (Disclaimer: currently the only stable seems to be pure Websocket transform, there is also socket.io transform which supports long polling but does not seem to be widely used)
+* Using only websocket transform (no backdoor for long polling) should work fine for 98% of browsers and should be enough in real-life
+
+# Using multiple servers (nodes)
+1. In order to broadcast to all sockets in "room" one must store socket-info in so called "adapter" that all nodes can read from. Adapter stores relation between sockets and rooms. Usually redis using pub/sub model is used, but one call also store socket-info in postgres, firebase, whatever. Storing in memory is fine when using only a single server.
+2. To achieve that client always communicates with the same server (important during creation of the socket, as there is an extra "upgrade" phase), one should setup **sticky sessions** using the http proxy, e.g. Nginx.
+
+Sticky sessions can be implemented based on cookie (recommended, or based on some token) or based on ip address of the client.
+The above steps also hold true when using "cluster" mode for nodejs.
