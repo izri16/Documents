@@ -23,7 +23,7 @@ a connection will send an HTTP request that includes a few required headers:
 * Alternative or fallback way for implementing real-time behavior when websocket is not supported
 * The client send HTTP request with a long timeout and the server do not respond to that request until some desired event occurs. When the connection timeouts
   the client send new request with long timeout and so on.
-* Resources on the server are being used, even when no data is available to send.
+* Resources on the server are being used, even when no data is available to send. Server basically holds `req` objects in some data structure in memory.
 * Responses are not guaranteed to come in same order if multiple connections are opened at the same time.
   
 # Periodic polling
@@ -38,8 +38,6 @@ This can be avoided either by:
 * Check `Origin` header on server. Modern browsers should not be able to fake it.
 * Better: Use similar protection as CSRF does using extra token.
 * According to https://blog.jimmyli.us/articles/2020-08/Cross-Site-WebSocket-Hijacking-With-SocketIO socket.io is not protected to it when using cookies. One can however implement one (or both) of the above checks using custom socket.io middleware. Similar check could be done for Apollo subscriptions.
-
-Ideally use some library for that and do not implement the protection on your own.
 
 # Socket.io
 Library that can handle Websocket protocol, but also have fallback options to simulate realtime behavior for old browser or cases when websocket connection fails
