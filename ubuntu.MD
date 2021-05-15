@@ -1,6 +1,7 @@
 ### Add executable to Launcher
 
-* Create `your-app.desktop` file in `Desktop`
+* Create `your-app.desktop` file in `~/Desktop` folder
+* Use absolute paths for `Exec` and `Icon` options
 * Example content of `your-app.desktop`:
 
 ```
@@ -9,14 +10,13 @@
 Version=1.0
 Type=Application
 Terminal=false
-Icon[en_US]=gnome-panel-launcher
 Exec=/home/richard/../your-app.AppImage
-Name[en_US]=AppName
 Name=AppName
 Icon=/home/richard/../some-icon.png
 ```
 
 * Add executable rights to file using `chmod +x your-app.desktop`
-* Execute file
-
-https://averagelinuxuser.com/ubuntu_custom_launcher_dock/
+* Test that file is correct by double clicking on it (it should launch)
+* Copy file to `~/.local/share/applications` (in order to add it to launcher)
+* Type `Alt + F2` (will launch gnome terminal) and type `restart`
+* Open ubuntu laucher type your app name, ... That's it!
