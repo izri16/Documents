@@ -20,3 +20,7 @@ Icon=/home/richard/../some-icon.png
 * Copy file to `~/.local/share/applications` (in order to add it to launcher)
 * Type `Alt + F2` (will launch gnome terminal) and type `restart`
 * Open ubuntu laucher type your app name, ... That's it!
+
+### Nordvpn autoconnet
+* `nordvpn set autoconnect [enabled]/[disabled] [[country]/[server]/[country_code]/[city]/[group] or [country] [city]]`
+* e.g. `nordvpn set autoconnect enabled Bratislava`
